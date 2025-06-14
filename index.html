@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" href="images/Logo/fav.jpg" type="image/png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="Script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Samarath Prathishthan Miraj</title>
+</head>
+
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <img src="images/Logo/Logo 3.png" alt="Company Logo">
+            </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Running Text (Marquee) -->
+        <div class="marquee-container">
+            <div class="container">
+                <div class="marquee">
+                    🙏🏻 समर्थ प्रतिष्ठान वाद्य पथक मिरज मध्ये आपले सहर्ष स्वागत 🙏🏻 
+                </div>
+            </div>
+        </div>
+        <!-- Registration Form -->
+        <div class="container">
+            <form id="registrationForm">
+                <h2>सभासद नोंदणी २०२५</h2>
+
+                <div class="form-note">
+                    <strong>Note:</strong> Fields marked with <span class="required" style="color: red; font-weight: bold;">*</span> are required.
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Full Name / संपूर्ण नाव <span class="required"
+                                style="color: red; font-weight: bold;">*</span> : </label>
+                        <input type="text" name="full_name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address / पत्ता <span class="required" style="color: red; font-weight: bold;">*</span>
+                            :</label>
+                        <input type="text" name="address" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Contact / फोन <span class="required" style="color: red; font-weight: bold;">*</span>
+                            :</label>
+                        <input type="tel" name="contact" pattern="[0-9]{10}" title="Enter a 10-digit phone number"
+                            maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Parent's Contact / पालकांचा फोन <span class="required"style="color: red; font-weight: bold;">*</span> :</label>
+                        <input type="tel" name="parentcontact" pattern="[0-9]{10}" title="Enter a 10-digit phone number"
+                            maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Relation with Contact Number / संपर्क क्रमांकाशी संबंध <span class="required"
+                                style="color: red; font-weight: bold;">*</span> :</label>
+                        <select name="rcn" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Any other family member">Any other family member</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Occupation / व्यवसाय <span class="required"
+                                style="color: red; font-weight: bold;">*</span> :</label>
+                        <select name="occ" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Student">Student</option>
+                            <option value="Job">Job</option>
+                            <option value="Buisness">Buisness</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Gender / लिंग: <span class="required" style="color: red; font-weight: bold;">*</span>
+                        </label>
+                        <select name="gender" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth / जन्मतारीख <span class="required"
+                                style="color: red; font-weight: bold;">*</span> :</label>
+                        <input type="date" name="dob" id="dob" required />
+                    </div>
+                    <script>
+                        // Set maximum date to December 31st, 2010
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const dobInput = document.getElementById('dob');
+
+                            // Set the max attribute to December 31st, 2010
+                            dobInput.setAttribute('max', '2010-12-31');
+
+                            // Additional validation to prevent manual entry of invalid dates
+                            dobInput.addEventListener('input', function () {
+                                const selectedDate = new Date(this.value);
+                                const maxDate = new Date('2010-12-31');
+
+                                if (selectedDate > maxDate) {
+                                    this.setCustomValidity('Please select a date on or before December 31st, 2010');
+                                    this.reportValidity();
+                                } else {
+                                    this.setCustomValidity('');
+                                }
+                            });
+
+                            // Prevent keyboard input of invalid dates
+                            dobInput.addEventListener('keydown', function (e) {
+                                // Allow navigation keys, backspace, delete, tab
+                                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' ||
+                                    e.key === 'ArrowUp' || e.key === 'ArrowDown' ||
+                                    e.key === 'Backspace' || e.key === 'Delete' ||
+                                    e.key === 'Tab') {
+                                    return;
+                                }
+
+                                // For other keys, check if the resulting date would be valid
+                                const currentValue = this.value;
+                                if (currentValue.length >= 10) { // Full date format YYYY-MM-DD
+                                    const testDate = new Date(currentValue);
+                                    const maxDate = new Date('2010-12-31');
+
+                                    if (testDate > maxDate) {
+                                        e.preventDefault();
+                                    }
+                                }
+                            });
+
+                            // Validate on blur (when user leaves the field)
+                            dobInput.addEventListener('blur', function () {
+                                if (this.value) {
+                                    const selectedDate = new Date(this.value);
+                                    const maxDate = new Date('2010-12-31');
+
+                                    if (selectedDate > maxDate) {
+                                        this.value = ''; // Clear invalid date
+                                        alert('Please select a date on or before December 31st, 2010');
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group">
+                        <label>Instrument / वाद्य <span class="required" style="color: red; font-weight: bold;">*</span>
+                            :</label>
+                        <select name="instrument" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="dhwaj">Dhwaj</option>
+                            <option value="dhol">Dhol</option>
+                            <option value="tasha">Tasha</option>
+                            <option value="toll">Toll</option>
+                        </select>
+                        <small style="color: red; font-size: 13px; font-weight: bold; display: block; margin-top: 4px;">
+                            टीप : ध्वज हा अनिवार्य आहे.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Blood Group / रक्तगट <span class="required"
+                                style="color: red; font-weight: bold;">*</span> :</label>
+                        <select name="blood_group" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <!-- <div class="form-group">
+                    <label>Upload Photo:</label>
+                    <input type="file" name="photo" accept="image/*" required />
+                </div> -->
+                </div>
+
+                <!-- Rules and Agreement Section -->
+                <!-- Simple Rules Card -->
+                <div class="simple-rules-card">
+                    <h3>📋 नियम व अटी / Rules & Regulations</h3>
+                    <ul class="simple-rules-list">
+                        <li><strong>वयोमर्यादा:</strong> १६ वर्षा पुढील मुलांनी व मुलींनीच फॉर्म भरावा.</li>
+                        <li><strong>अंतिम तारीख:</strong> शनिवार दिनांक ०५/०७/२०२५ ही फॉर्म भरायची अंतिम तारीख असेल.
+                        </li>
+                        <li><strong>प्रॅक्टिसची वेळ:</strong> प्रॅक्टिस ची वेळ ही संध्याकाळी ६ ते ८ असेल.</li>
+                        <li><strong>उपस्थिती:</strong> वादकांनी सर्व सेवा साठी वादनास येणे बंधनकारक राहील.</li>
+                    </ul>
+
+                    <!-- Agreement Checkbox -->
+                    <div class="agreement-container">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="termsCheckbox">
+                            <span class="custom-check"></span>
+                        </label>
+                        <label for="termsCheckbox" class="agreement-label">
+                            मी वरील सर्व नियम व अटी मान्य करतो / I agree to all terms & conditions
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" id="submitBtn">Register Now</button>
+            </form>
+        </div>
+        <!-- Script for Welcome page direction and checkbox check -->
+        <script>
+            // DOM elements
+            const dobInput = document.getElementById('dob');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const registrationForm = document.getElementById('registrationForm');
+
+            // Initialize - disable submit button on page load
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.cursor = 'not-allowed';
+
+            // Function to check if form is valid
+            function checkFormValidity() {
+                const isDobFilled = dobInput.value.trim() !== '';
+                const isTermsChecked = termsCheckbox.checked;
+
+                // Get all required form fields
+                const formData = new FormData(registrationForm);
+                const fullName = formData.get('full_name');
+                const contact = formData.get('contact');
+                const instrument = formData.get('instrument');
+
+                // Check if all required fields are filled
+                const isFormComplete = fullName && fullName.trim() !== '' &&
+                    contact && contact.trim() !== '' &&
+                    instrument && instrument.trim() !== '' &&
+                    isDobFilled && isTermsChecked;
+
+                // Enable button only if all conditions are met
+                if (isFormComplete) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+
+                    // Visual feedback animation
+                    setTimeout(() => {
+                        submitBtn.style.transform = 'scale(1.02)';
+                        setTimeout(() => {
+                            submitBtn.style.transform = 'scale(1)';
+                        }, 150);
+                    }, 100);
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.5';
+                    submitBtn.style.cursor = 'not-allowed';
+                }
+            }
+
+            // Event listeners for all form fields
+            dobInput.addEventListener('input', checkFormValidity);
+            dobInput.addEventListener('change', checkFormValidity);
+            termsCheckbox.addEventListener('change', checkFormValidity);
+
+            // Add event listeners to all form inputs
+            const allInputs = registrationForm.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => {
+                input.addEventListener('input', checkFormValidity);
+                input.addEventListener('change', checkFormValidity);
+            });
+
+            // Form submission handling
+            registrationForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Final validation check
+                const formData = new FormData(this);
+                const fullName = formData.get('full_name');
+                const contact = formData.get('contact');
+                const instrument = formData.get('instrument');
+                const isDobFilled = dobInput.value.trim() !== '';
+                const isTermsChecked = termsCheckbox.checked;
+
+                if (!fullName || !contact || !instrument || !isDobFilled || !isTermsChecked) {
+                    alert('Please fill all required fields and accept terms & conditions');
+                    return false;
+                }
+
+                // Disable submit button and show loading (optional - uncomment if needed)
+                // submitBtn.disabled = true;
+                // submitBtn.textContent = 'Registering...';
+                // if (loading) loading.style.display = 'block';
+
+                // Send data to Google Apps Script
+                fetch('https://script.google.com/macros/s/AKfycbyxOAy1KxAkt86QQIK_uKQ-GRoX0ZnAjFm_nSPriYLe2nUm6SOxpQ0HDwTzttdfEyEY/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Store form data in sessionStorage for welcome page
+                            sessionStorage.setItem('registrationData', JSON.stringify({
+                                full_name: formData.get('full_name'),
+                                contact: formData.get('contact'),
+                                instrument: formData.get('instrument')
+                            }));
+
+                            // Immediate redirect to welcome page
+                            window.location.href = 'Welcome.html';
+                        } else {
+                            throw new Error('Registration failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Registration failed. Please try again.');
+
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Register Now';
+                        if (loading) loading.style.display = 'none';
+
+                        // Recheck form validity
+                        checkFormValidity();
+                    });
+            });
+
+            // Initialize check on page load
+            document.addEventListener('DOMContentLoaded', function () {
+                checkFormValidity();
+            });  
+        </script>
+        <!-- Script End -->
+
+
+    </main>
+
+    <!-- Smaller Footer with Social Media Icons -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>"Feel the real thunder, not just the speakers! Dhol Pathak isn’t just music,
+                        it's tradition in motion — raw, powerful, and proudly desi!"</p>
+                </div>
+
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Dhananjay Manolikar : +91 9921173299</p>
+                    <p>Sameehan Limaye : +91 9730154394</p>
+                    <p>Shivdatta Bapat : +91 7057872201</p>
+                    <p>Prajwal Shendge : +91 7057093645</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/samarth_pratishthan_miraj/?hl=en" class="instagram"><img
+                                src="images/Logo/instagram.png" alt=""></a>
+                        <a href="https://www.youtube.com/@samarthpratishthanmiraj6912" class="youtube"><img
+                                src="images/Logo/youtube.png" alt=""></a>
+                        <a href="https://www.facebook.com/SamarthPratisthanMiraj" class="facebook"><img
+                                src="images/Logo/facebook.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Samarath Prathishthan Miraj. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+</body>
+
+</html>
